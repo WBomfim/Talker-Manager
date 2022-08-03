@@ -3,7 +3,7 @@ const { getData } = require('../helpers/getData');
 
 const router = express.Router();
 
-router.get('/', async (req, res) => {
+router.get('/', async (_req, res) => {
   try {
     const data = await getData();
     res.status(200).json(data);
