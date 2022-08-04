@@ -2,7 +2,7 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const loginRouter = require('./routes/loginRouter');
 const talkerRouter = require('./routes/talkerRouter');
-const getErrors = require('./middlewares/getErrors');
+const errorMiddleware = require('./middlewares/errorMiddleware');
 
 const app = express();
 app.use(bodyParser.json());
@@ -19,7 +19,7 @@ app.use('/login', loginRouter);
 
 app.use('/talker', talkerRouter);
 
-app.use(getErrors);
+app.use(errorMiddleware);
 
 app.listen(PORT, () => {
   console.log('Online na porta 3000');
