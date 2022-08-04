@@ -42,9 +42,19 @@ const updateTalker = async (id, newTalker) => {
   return updatedTalker;
 };
 
+const deleteTalker = async (id) => {
+  const data = await getAllTalkers();
+  const idFound = data.some((talker) => talker.id === Number(id));
+  if (!idFound) return false;
+  const newData = data.filter((talker) => talker.id !== Number(id));
+  await fs.writeFile('talker.json', JSON.stringify(newData, null, 2));
+  return true;
+};
+
 module.exports = {
   getAllTalkers,
   getTalkerById,
   addTalker,
   updateTalker,
+  deleteTalker,
 };

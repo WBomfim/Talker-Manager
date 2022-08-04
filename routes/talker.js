@@ -32,4 +32,6 @@ router.put('/:id',
   validateRate,
 handleErrors(talkerController.updateTalker));
 
+router.delete('/:id', validateToken, handleErrors(talkerController.deleteTalker));
+
 module.exports = router;

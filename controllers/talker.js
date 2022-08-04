@@ -27,9 +27,19 @@ const updateTalker = async (req, res) => {
   return res.status(200).json(updatedTalker);
 };
 
+const deleteTalker = async (req, res) => {
+  const { id } = req.params;
+  const deleted = await dataServices.deleteTalker(id);
+  if (!deleted) {
+    return res.status(404).json({ message: 'Palestrante não encontrada' });
+  }
+  return res.status(204).send();
+};
+
 module.exports = {
   getAllTalkers,
   getTalkerById,
   addTalker,
   updateTalker,
+  deleteTalker,
 };
