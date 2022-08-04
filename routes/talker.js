@@ -13,6 +13,13 @@ const router = express.Router();
 router.get('/',
   handleErrors(talkerController.getAllTalkers));
 
+router.get('/search',
+  validateToken,
+  handleErrors(talkerController.searchTalkers));
+
+router.get('/:id',
+  handleErrors(talkerController.getTalkerById));
+
 router.post('/',
   validateToken,
   validateName,
@@ -22,13 +29,6 @@ router.post('/',
   validateRate,
   handleErrors(talkerController.addTalker));
   
-router.get('/search',
-  validateToken,
-  handleErrors(talkerController.searchTalkers));
-
-router.get('/:id',
-  handleErrors(talkerController.getTalkerById));
-
 router.put('/:id',
   validateToken,
   validateName,
@@ -36,7 +36,7 @@ router.put('/:id',
   validateTalk,
   validateDate,
   validateRate,
-handleErrors(talkerController.updateTalker));
+  handleErrors(talkerController.updateTalker));
 
 router.delete('/:id',
   validateToken,

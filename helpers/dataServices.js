@@ -6,17 +6,17 @@ const getAllTalkers = async () => {
   return JSON.parse(data);
 };
 
-const getTalkerById = async (id) => {
-  const data = await getAllTalkers();
-  const selectedTalker = data.find((talker) => talker.id === Number(id));
-  return selectedTalker;
-};
-
 const searchTalkers = async (search) => {
   const data = await getAllTalkers();
   const filteredTalkers = data.filter((talker) => talker.name.includes(search));
   if (!filteredTalkers) return [];
   return filteredTalkers;
+};
+
+const getTalkerById = async (id) => {
+  const data = await getAllTalkers();
+  const selectedTalker = data.find((talker) => talker.id === Number(id));
+  return selectedTalker;
 };
 
 const addTalker = async (talker) => {

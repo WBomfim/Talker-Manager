@@ -5,6 +5,7 @@ const handleErrors = (action) => (
     } catch (err) {
       next(err);
     }
-  });
+  }
+);
 
 module.exports = handleErrors;
