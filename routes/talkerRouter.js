@@ -1,7 +1,7 @@
 const express = require('express');
-const handleErrors = require('./handleErrors');
+const handleErrors = require('../middlewares/handleErrors');
 const talkerController = require('../controllers/talkers');
-const validateToken = require('./validateToken');
+const validateToken = require('../middlewares/validateToken');
 
 const router = express.Router();
 
