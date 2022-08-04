@@ -2,9 +2,7 @@ const fs = require('fs/promises');
 
 const getAllTalkers = async () => {
   const data = await fs.readFile('talker.json', 'utf8');
-  if (!data) {
-    return [];
-  }
+  if (!data) return [];
   return JSON.parse(data);
 };
 
@@ -12,6 +10,13 @@ const getTalkerById = async (id) => {
   const data = await getAllTalkers();
   const selectedTalker = data.find((talker) => talker.id === Number(id));
   return selectedTalker;
+};
+
+const searchTalkers = async (search) => {
+  const data = await getAllTalkers();
+  const filteredTalkers = data.filter((talker) => talker.name.includes(search));
+  if (!filteredTalkers) return [];
+  return filteredTalkers;
 };
 
 const addTalker = async (talker) => {
@@ -54,6 +59,7 @@ const deleteTalker = async (id) => {
 module.exports = {
   getAllTalkers,
   getTalkerById,
+  searchTalkers,
   addTalker,
   updateTalker,
   deleteTalker,

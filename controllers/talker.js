@@ -14,6 +14,12 @@ const getTalkerById = async (req, res) => {
   return res.status(200).json(selectedTalker);
 };
 
+const searchTalkers = async (req, res) => {
+  const { q } = req.query;
+  const filteredTalkers = await dataServices.searchTalkers(q);
+  return res.status(200).json(filteredTalkers);
+};
+
 const addTalker = async (req, res) => {
   const talker = req.body;
   const newTalker = await dataServices.addTalker(talker);
@@ -39,6 +45,7 @@ const deleteTalker = async (req, res) => {
 module.exports = {
   getAllTalkers,
   getTalkerById,
+  searchTalkers,
   addTalker,
   updateTalker,
   deleteTalker,

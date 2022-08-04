@@ -10,7 +10,8 @@ const validateRate = require('../middlewares/validateRate');
 
 const router = express.Router();
 
-router.get('/', handleErrors(talkerController.getAllTalkers));
+router.get('/',
+  handleErrors(talkerController.getAllTalkers));
 
 router.post('/',
   validateToken,
@@ -20,8 +21,13 @@ router.post('/',
   validateDate,
   validateRate,
   handleErrors(talkerController.addTalker));
+  
+router.get('/search',
+  validateToken,
+  handleErrors(talkerController.searchTalkers));
 
-router.get('/:id', handleErrors(talkerController.getTalkerById));
+router.get('/:id',
+  handleErrors(talkerController.getTalkerById));
 
 router.put('/:id',
   validateToken,
@@ -32,6 +38,8 @@ router.put('/:id',
   validateRate,
 handleErrors(talkerController.updateTalker));
 
-router.delete('/:id', validateToken, handleErrors(talkerController.deleteTalker));
+router.delete('/:id',
+  validateToken,
+  handleErrors(talkerController.deleteTalker));
 
 module.exports = router;
