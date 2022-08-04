@@ -14,7 +14,14 @@ const getTalkerById = async (req, res) => {
   return res.status(200).json(selectedTalker);
 };
 
+const addTalker = async (req, res) => {
+  const talker = req.body;
+  const newTalker = await dataServices.addTalker(talker);
+  return res.status(201).json(newTalker);
+};
+
 module.exports = {
   getAllTalkers,
   getTalkerById,
+  addTalker,
 };

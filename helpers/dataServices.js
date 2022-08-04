@@ -14,7 +14,19 @@ const getTalkerById = async (id) => {
   return selectedTalker;
 };
 
+const addTalker = async (talker) => {
+  const data = await getAllTalkers();
+  const newTalker = {
+    id: data.length + 1,
+    ...talker,
+  };
+  data.push(newTalker);
+  await fs.writeFile('talker.json', JSON.stringify(data, null, 2));
+  return newTalker;
+};
+
 module.exports = {
   getAllTalkers,
   getTalkerById,
+  addTalker,
 };

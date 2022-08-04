@@ -1,6 +1,6 @@
 const express = require('express');
 const handleErrors = require('../middlewares/handleErrors');
-const talkerController = require('../controllers/talkers');
+const talkerController = require('../controllers/talker');
 const validateToken = require('../middlewares/validateToken');
 const validateName = require('../middlewares/validateName');
 const validateAge = require('../middlewares/validateAge');
@@ -19,7 +19,7 @@ router.post('/',
   validateTalk,
   validateDate,
   validateRate,
-  handleErrors());
+  handleErrors(talkerController.addTalker));
 
 router.get('/:id', handleErrors(talkerController.getTalkerById));
 
