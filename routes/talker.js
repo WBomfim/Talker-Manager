@@ -23,4 +23,13 @@ router.post('/',
 
 router.get('/:id', handleErrors(talkerController.getTalkerById));
 
+router.put('/:id',
+  validateToken,
+  validateName,
+  validateAge,
+  validateTalk,
+  validateDate,
+  validateRate,
+handleErrors(talkerController.updateTalker));
+
 module.exports = router;

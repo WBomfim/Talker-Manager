@@ -20,8 +20,16 @@ const addTalker = async (req, res) => {
   return res.status(201).json(newTalker);
 };
 
+const updateTalker = async (req, res) => {
+  const { id } = req.params;
+  const newTalker = req.body;
+  const updatedTalker = await dataServices.updateTalker(id, newTalker);
+  return res.status(200).json(updatedTalker);
+};
+
 module.exports = {
   getAllTalkers,
   getTalkerById,
   addTalker,
+  updateTalker,
 };
