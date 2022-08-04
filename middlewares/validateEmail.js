@@ -10,6 +10,4 @@ const validateEmail = (req, res, next) => {
   next();
 };
 
-module.exports = {
-  validateEmail,
-};
+module.exports = validateEmail;
