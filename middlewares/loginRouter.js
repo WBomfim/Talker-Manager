@@ -1,13 +1,10 @@
 const express = require('express');
-const { generateToken } = require('../helpers/generateToken');
+const loginController = require('../controllers/login');
 const { validateEmail } = require('./validateEmail');
 const { validatePassword } = require('./validatePassword');
 
 const router = express.Router();
 
-router.post('/', validateEmail, validatePassword, async (_req, res) => {
-  const token = generateToken();
-  res.status(200).json({ token });
-});
+router.post('/', validateEmail, validatePassword, loginController.returnToken);
 
 module.exports = router;
