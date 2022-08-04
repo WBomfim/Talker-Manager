@@ -5,6 +5,8 @@ const validateToken = require('../middlewares/validateToken');
 const validateName = require('../middlewares/validateName');
 const validateAge = require('../middlewares/validateAge');
 const validateTalk = require('../middlewares/validateTalk');
+const validateDate = require('../middlewares/validateDate');
+const validateRate = require('../middlewares/validateRate');
 
 const router = express.Router();
 
@@ -15,6 +17,8 @@ router.post('/',
   validateName,
   validateAge,
   validateTalk,
+  validateDate,
+  validateRate,
   handleErrors());
 
 router.get('/:id', handleErrors(talkerController.getTalkerById));
